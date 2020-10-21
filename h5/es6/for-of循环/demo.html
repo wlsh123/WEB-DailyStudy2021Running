@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for-of的用法，与for-in的区别</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //对数组循环
+    for (const n of [10, 20, 30]) {
+        console.log(n);
+       // alert(n);
+    }
+    //对字符串循环
+    for (const n of 'abc') {
+        console.log(n);
+    }
+    //for-of可以对任何集合（Array、Map、Set、String、迭代器）进行循环。不能循环对象，因为对象不是集合
+    var object = {name: "foo", tel: "****"};
+    for (const i in object) {
+        console.log(object[i]);
+    }
+</script>
+</html>
