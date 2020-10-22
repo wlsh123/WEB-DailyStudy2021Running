@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生成器函数初认识</title>
+  </head>
+  <body></body>
+  <script>
+    function* sample(name) {
+      yield "你好：" + name + "!";
+      yield "欢迎阅读我的文章";
+      if (name.startsWidth("张")) {
+        yield "再见！";
+      }
+    }
+    var iter = sample("张学友");
+    console.log(iter.next()); //{value: "你好：张学友!", done: false}
+    console.log(iter.next()); //{value: "欢迎阅读我的文章", done: false}
+  </script>
+</html>

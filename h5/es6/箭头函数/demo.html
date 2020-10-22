@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用箭头函数创建对象</title>
+  </head>
+  <body>
+    <input type="button" value="显示年龄" onclick="getAge();" />
+  </body>
+  <script>
+    class Person {
+      constructor() {
+        this.age = 0;
+
+        // setInterval(function growUp() {
+        //   console.log(this); //这个是Window对象
+        //   this.age++;
+        //   console.log(this.age); //NaN
+        // }, 1000);
+        setInterval(() => {
+          this.age++;
+          console.log(this);
+          console.log(this.age);
+        }, 1000);
+      }
+      get age() {
+        return this._age;
+      }
+      set age(value) {
+        this._age = value;
+      }
+    }
+    var p = new Person();
+    function getAge() {
+      console.log(p.age);
+    }
+  </script>
+</html>
