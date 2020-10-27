@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>解构赋值-对象</title>
+  </head>
+  <body></body>
+  <script>
+    let fruits = { apple: "苹果", orange: "桔子", pear: "梨" };
+    let { apple, orange, pear } = fruits; //变量名必须与属性名相同
+    console.log(apple);
+    console.log(orange);
+    console.log(pear);
+    // 只取出一部分
+    let { orange } = fruits;
+    console.log(orange);
+
+    // 将属性值赋值给与属性名不同的变量
+    //let { apple: newApple, orange: newOrange, pear } = fruits;
+    //console.log(newApple);
+    // 在大多数情况下，变量名与属性名必须相同，当需要将属性名赋值给其他变量时采用{属性名：新变量名...}
+  </script>
+</html>

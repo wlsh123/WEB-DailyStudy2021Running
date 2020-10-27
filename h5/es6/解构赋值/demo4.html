@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>解构赋值-多个阶层中的使用方法</title>
+  </head>
+  <body></body>
+  <script>
+    let user = [
+      ["张", "三"],
+      ["李", "四"],
+      ["王", "五"],
+    ];
+
+    //获取数组中第二个元素数组的值
+    let [, [firstName, lastName]] = user;
+    console.log(firstName);
+    console.log(lastName);
+
+    //2.多维数组中保存对象时使用的解构赋值
+    let user2 = [
+      { name: "张三", age: 19 },
+      { name: "李四", age: 20 },
+      { name: "王五", age: 21 },
+    ];
+    //获取数组中第三个对象的值
+    let [, , { name, age }] = user2;
+    console.log(name);
+    console.log(age);
+
+    //获取数组中第一个对象的值
+    let [{ name: newName, age: newAge }] = user2;
+    console.log(newName);
+    console.log(newAge);
+  </script>
+</html>

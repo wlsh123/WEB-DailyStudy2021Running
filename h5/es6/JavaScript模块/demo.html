@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript模块的使用方法</title>
+  </head>
+  <body></body>
+  <!-- 写法一 -->
+  <script type="module">
+    import { user } from "./index.js";
+    import { sayName } from "./index.js";
+    sayName(user);
+  </script>
+
+  <!-- 写法二 -->
+  <script type="module">
+    import { user, sayName } from "./index.js";
+    sayName(user);
+  </script>
+
+  <!-- 写法三 -->
+  <script type="module">
+    import { user as u, sayName as sn } from "./index.js";
+    sn(u);
+  </script>
+</html>
+
+<!-- 浏览器实际处理模块流程：1.解析、2.加载、3.链接、4.运行 -->

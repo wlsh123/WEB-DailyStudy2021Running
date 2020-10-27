@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>解构赋值-对象具有深层次解构</title>
+  </head>
+  <body></body>
+  <script>
+    let user = {
+      u1: { name: "张三", age: 18 },
+      u2: { name: "李四", age: 19 },
+      u3: { name: "王五", age: 20 },
+    };
+    let {
+      u1: { name, age },
+    } = user;
+    console.log(name);
+
+    //注意：1.数组使用解构赋值给变量赋值后，可以再次对数组使用解构赋值方法修改这些变量值。
+    let [apple, orange, pear] = ["苹果", "桔子", "梨"];
+    console.log(apple);
+    console.log(orange);
+    console.log(pear);
+
+    [apple, orange, pear] = ["大苹果", "大桔子", "大梨"];
+    console.log(apple);
+    console.log(orange);
+    console.log(pear);
+    //注意：2.当对对象使用解构服饰方法给变量赋值后，再次对对象使用解构赋值方法修改这些变量值时将抛出语法错误。
+  </script>
+</html>
