@@ -2,7 +2,11 @@ import React from "react";
 import {render} from "react-dom";
 import App from "./App.js";
 render(
-    <App></App>,
+    <div>
+        <App></App>
+        <h1>又见面了！</h1>
+    </div>
+    ,
     document.getElementById("app-container")
 )
 
