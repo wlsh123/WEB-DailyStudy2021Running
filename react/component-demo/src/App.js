@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 // import Home from './components/Home.js';
 // import Like from './components/Like.js';
-import List from './components/List.js';
+// import List from './components/List.js';
 import TodoList from './components/TodoList.js';
-import ReactForm from './components/ReactForm.js';
+// import ReactForm from './components/ReactForm.js';
 // import News from './components/News.js';
+import TodoListNew from './components/TodoListNew.js';
 class App extends Component{
   render(){
     return(
@@ -13,11 +14,12 @@ class App extends Component{
         {/* <Home />
         <News /> */}
         {/* <Like /> */}
-        <List/>
+        {/* <List/> */}
         <hr/>
-        <TodoList />
+        {/* <TodoList /> */}
+        <TodoListNew />
         <hr />
-        <ReactForm />
+        {/* <ReactForm /> */}
       </div>
     );
   }
