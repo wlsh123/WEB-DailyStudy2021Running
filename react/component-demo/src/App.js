@@ -6,6 +6,7 @@ import TodoList from './components/TodoList.js';
 // import ReactForm from './components/ReactForm.js';
 // import News from './components/News.js';
 import TodoListNew from './components/TodoListNew.js';
+import Tab from './components/Tab';
 class App extends Component{
   render(){
     return(
@@ -20,6 +21,7 @@ class App extends Component{
         <TodoListNew />
         <hr />
         {/* <ReactForm /> */}
+        <Tab/>
       </div>
     );
   }
