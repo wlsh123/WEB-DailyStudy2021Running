@@ -6,7 +6,7 @@ import Mount from './Mount';
 
 ReactDOM.render(
   <div>
-    123
+    123456
   </div>,
   document.getElementById('root')
 );
