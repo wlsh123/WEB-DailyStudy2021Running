@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let p = new Promise((resolve, reject)=>{
+    //     // resolve("成功");
+    //     // reject("失败");
+    //     setTimeout(() => {
+    //         reject("失败");
+    //     }, 1000);
+    // }).then(
+    //     success =>{
+    //         console.log(success);
+    //     },
+    //     message =>{
+    //         console.log(message);
+    //     }
+    // ); 
+    // console.log(p);
+
+
+    //Promise.reject()
+
+    // try {
+    //     Promise.reject("123");
+    // } catch (error) {
+    //     console.log(error);
+    // }//Uncaught (in promise) 123
+    
+    // let p = Promise.reject("失败");
+    // p.then(null, e =>{
+    //     console.log(e);
+    // })
+
+
+    let p1 = Promise.resolve('foo');
+    let p2 = p1.then();
+    let p3 = p1.then(()=>{undefined});
+    let p4 = p1.then(()=>{});
+    let p5 = p1.then(()=>{Promise.resolve()});
+    let p6 = p1.then(()=>"bar");
+    let p7 = p1.then(()=>Promise.resolve("bar"));
+    let p8 = p1.then(()=>new Promise(()=>{}));
+    let p9 = p1.then(()=>{Promise.reject()});
+    let p10 = p1.then(()=>{throw 'ba';});
+    let p11= p1.then(()=>{Error('qux')});
+    console.log(p11);
+</script>
+</html>
