@@ -3,3 +3,5 @@
 
 # 配置ignore文件地址
 https://github.com/github/gitignore
+
+迁移到mac
