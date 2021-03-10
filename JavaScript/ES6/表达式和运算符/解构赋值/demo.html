@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构赋值应用</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var a ,b ,rest;
+  [a ,b]=[5, 15];
+  console.log("a="+a+"   b="+b);
+  [a, b, ...rest]=[1,2,3,4,5,6,7,8,9,10];
+  console.log(rest);
+
+  //解构数组的用法
+  //1.声明变量并赋值时的解构
+  var foo = ["ONE", 'TWO', "THREE"];
+  var [one, two, three] = foo;
+  console.log(one+">"+two+">"+three);
+
+  //2.变量先声明后赋值的解构
+  var a, b, rest;
+  [a, b] = [5, 15];
+  console.log("a=" + a + "   b=" + b);
+
+  //3.默认值
+  [a, b, c=0] = [5, 15];
+  console.log(c);
+
+  //4.交换变量
+  let q = 1;
+  let w = 2;
+  [q ,w] = [w, q];
+  console.log(q+">"+w);
+</script>
+</html>
