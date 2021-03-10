@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>展开运算符"..."学习</title>
+</head>
+<body>
+</body>
+<script>
+  //展开数组
+  let arr1 = [1, 2, 3];
+  console.log(...arr1);
+  //展开字符串
+  let str1 = "abcd";
+  console.log(...str1);
+  //展开数组并赋值给新数组
+  let arr2 = [...arr1];
+  console.log(arr2);
+  //连接数组
+  console.log([...arr1, ...str1]);
+  //函数调用时使用展开表达式
+  function myFun(a, b, c){
+    return console.log(a+b+c);
+  }
+  myFun(...arr1);
+  //new表达式中的应用
+  var dateFiles = [1970, 0, 1];
+  var d = new Date(...dateFiles);
+  console.log(d);
+  //使用展开运算符构造字面量对象（拷贝对象）
+  let obj1 = {name: "zhang3", age: 18, sex: "男"};
+  let obj2 = {name: "li4", age: 28}; 
+  let copyObj = {...obj1};
+  let mergeObj = {...copyObj, ...obj2};
+  console.log(mergeObj);
+
+  //let obj3 = [...copyObj];//Uncaught TypeError: copyObj is not iterable
+
+  function aaa(...arrt){
+    return console.log(arrt);
+  }
+  aaa(1,2,2,3);
+</script>
+</html>
