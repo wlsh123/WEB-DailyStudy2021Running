@@ -36,5 +36,21 @@
   let w = 2;
   [q ,w] = [w, q];
   console.log(q+">"+w);
+
+  //解构对象的用法
+  //1.基本赋值
+  var o = {name:"zhang3", age:18};
+  let {name, age} = o;
+  console.log(name);
+  console.log(age);
+
+  //2.新变量赋值
+  var oe = { pe: 42, qe: true };
+  var { pe: foo, qe: bar } = oe;
+  console.log(foo); // 42
+  console.log(bar);
+
+  //3.默认值
+  var {a=10, b=5} = {a:3};
 </script>
 </html>
