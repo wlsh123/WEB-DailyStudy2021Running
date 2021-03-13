@@ -18,11 +18,13 @@ react配置：
 
 
 不会配置，就直接使用create-react-app 快速构建 React 开发环境
-$npm install -g create-react-app
-$ create-react-app my-app
-$ cd my-app/
-$ npm start
+# npm install -g create-react-app
+# create-react-app my-app
+# cd my-app/
+# npm start
 
-
+# npx create-react-app my-app
+# cd my-app
+# npm start
 
 react项目的所有node_modules文件都删了，要想执行需要先 npm install一下
