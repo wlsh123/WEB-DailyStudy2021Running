@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import Mount from './Mount';
+import Bpp from './Bpp';
 
 ReactDOM.render(
   <div>
-    123456
+    <Bpp />
   </div>,
   document.getElementById('root')
 );
