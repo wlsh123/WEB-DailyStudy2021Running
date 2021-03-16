@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Bpp from './Bpp';
+import Fpp from './Fpp';
 
 ReactDOM.render(
   <div>
-    <Bpp />
+    <Fpp />
   </div>,
   document.getElementById('root')
 );
