@@ -1,1 +1,0 @@
-var welcome = "hello world！";
