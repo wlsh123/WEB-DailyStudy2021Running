@@ -1660,7 +1660,91 @@ setTimeout(function() {
 
 如果你想寻找包含验证、追踪访问字段以及处理表单提交的完整解决方案，使用 [Formik](https://jaredpalmer.com/formik) 是不错的选择。然而，它也是建立在受控组件和管理 state 的基础之上 —— 所以不要忽视学习它们。
 
-### 10.状态提升
+### 10.路由
+
+- SPA的理解
+
+  1. 单页web应用。
+  2. 整个应用只有一个完整的页面。
+  3. 点击页面中的链接不会刷新页面，只会做页面的局部更新。
+  4. 数据都需要通过ajax请求获取，并在前端异步展现。
+
+- 路由的理解
+
+  1. 什么是路由：
+     1. 一个路由就是一个映射关系（key.value）
+     2. key为路径， value可能是function或component
+  2. 路由分类：
+     1. 后端路由：
+        1. 理解：value是function，用来处理客户端提交的请求。
+        2. 注册路由：router.get(path, function(req, res))
+        3. 工作过程：当node接收到一个请求时，根据请求路径找到匹配的路由，调用路由中的函数来处理请求，返回响应数据。
+     2. 前端路由：
+        1. 浏览器端路由：value是component，用于展示页面内容。
+        2. 注册路由：<Router path='/test' component={Test} >
+        3. 工作过程：当浏览器的path变成/test时，当前路由组件就会变成Test组件。
+
+- `React-router-dom`相关API
+
+  - <BrowserRouter>
+  - <HashRouter>
+  - <Route>
+  - <Redirect>
+  - <Link>
+  - <NavLink>
+  - <Switch>
+
+- 路由的基本使用
+
+  1. 明确好界面中的导航区、展示区。
+  2. 导航区的a标签改为Link标签<Link to='/xxx'>Demo</Link>
+  3. 展示区写Route标签进行路由匹配<Route path='/xxx' component={Demo} />
+  4. <App>的最外侧包裹一个<BrowserRouter>或<HashRouter>
+
+- 路由组件与一般组件
+
+  1. 写法不同：
+
+     一般组件：<Demo />
+
+     路由组件：<Route path='/xxx' component={Demo} />
+
+  2. 存放位置不同：
+
+     一般组件：component
+
+     路由组件：pages
+
+  3. 接收到的props不同：
+
+     一般组件：写组件标签时传递了什么就能收到什么
+
+     路由组件：接收到三个固定属性
+
+     ```json
+     history:
+       go: ƒ go(n)
+       goBack: ƒ goBack()
+       goForward: ƒ goForward()
+       push: ƒ push(path, state)
+       replace: ƒ replace(path, state)
+       
+     location:
+       pathname: "/about"
+       search: ""
+       state: undefined
+       
+     match:
+       params: {}
+       path: "/about"
+       url: "/about"
+     ```
+
+- Switch的使用
+
+  通常情况下，path和component是一一对应的关系，Switch可以提高路由匹配效率（单一匹配）
+
+### 11.状态提升
 
 在本节中，我们将创建一个用于计算水在给定温度下是否会沸腾的温度计算器。
 
@@ -1884,7 +1968,7 @@ class Calculator extends React.Component {
 
 当你在 UI 中发现错误时，可以使用 [React 开发者工具](https://github.com/facebook/react/tree/master/packages/react-devtools) 来检查问题组件的 props，并且按照组件树结构逐级向上搜寻，直到定位到负责更新 state 的那个组件。这使得你能够追踪到产生 bug 的源头：
 
-### 11.组合vs继承
+### 12.组合vs继承
 
 ```react
 function FancyBorder(props){
@@ -2015,7 +2099,7 @@ class SignUoDialog extends React.Component{
 }
 ```
 
-### 12.React哲学
+### 13.React哲学
 
 - ## 第一步：将设计好的 UI 划分为组件层级
 
@@ -2663,12 +2747,4 @@ class Login extends React.Component{
 
 - 最好使用每条数据的唯一标识作为key，id、手机号、身份证、学号等唯一值。
   - 如果确定只是简单的展示数据，用index也是可以的
-
-### axios网络请求
-
-首先需要安装`axios`
-
-```shell
-npm install axios
-```
 
