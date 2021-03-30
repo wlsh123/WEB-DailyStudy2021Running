@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 // import {Link, Route} from 'react-router-dom';
-import {NavLink, Route, Switch} from 'react-router-dom'
+import {NavLink, Route, Switch, Redirect} from 'react-router-dom'
 import Home from './pages/Home';
 import About from './pages/About'
 import Header from './component/Header';
-import MyNavLink from './component/MyNavLink';
+// import MyNavLink from './component/MyNavLink';
 class APP extends Component {
   constructor(props) {
     super(props);
@@ -25,12 +25,12 @@ class APP extends Component {
                 {/* <Link className="list-group-item" to='/about'>About</Link><br />
                 <Link className="list-group-item" to='/home'>Home</Link> */}
 
-              {/* <NavLink activeClassName="atguigu" className="list-group-item" to='/about'>About</NavLink>              
-              <NavLink activeClassName="atguigu" className="list-group-item" to='/home'>Home</NavLink> */}
+              <NavLink activeClassName="atguigu" className="list-group-item" to='/about'>About</NavLink>              
+              <NavLink activeClassName="atguigu" className="list-group-item" to='/home'>Home</NavLink>
 
               {/* 使用自己封装的NavLink */}
-              <MyNavLink to='/about' >About</MyNavLink>
-              <MyNavLink to='/home' >Home</MyNavLink>
+              {/* <MyNavLink to='/about' >About</MyNavLink>
+              <MyNavLink to='/home' >Home</MyNavLink> */}
             </div>
           </div>
           <div className="col-xs-6">
@@ -38,8 +38,9 @@ class APP extends Component {
               <div className="panel-body">
                 {/* 注册路由 */}
                 <Switch>
-                  <Route path="/about" component={About} />
-                  <Route path="/home" component={Home} />
+                  <Route exact path="/about" component={About} />
+                  <Route exact path="/home" component={Home} />
+                  <Redirect to="/about"/>
                 </Switch>
               </div>
             </div>

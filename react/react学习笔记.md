@@ -1744,6 +1744,33 @@ setTimeout(function() {
 
   通常情况下，path和component是一一对应的关系，Switch可以提高路由匹配效率（单一匹配）
 
+- 路由的模糊匹配与严格匹配（exact）
+
+  ```react
+  <Switch>
+    <Route path="/about" component={About} />
+    <Route exact path="/home" component={Home} />
+  </Switch>
+  ```
+
+  1. 默认使用的是模糊匹配
+  2. 开启严格匹配：<Route exact={true} path="/home" component={Home} />
+  3. 严格匹配不要随便开启，需要再开，有些时候开启会导致无法继续匹配二级路由
+
+- Redirect的使用
+
+  1. 一般写在所有路由注册的最下方，当所有路由都无法匹配时，跳转到Redirect指定的路由
+
+  ```react
+  <Switch>
+    <Route path="/about" component={About} />
+    <Route exact path="/home" component={Home} />
+    <Redirect to="/home" />
+  </Switch>
+  ```
+
+  
+
 ### 11.状态提升
 
 在本节中，我们将创建一个用于计算水在给定温度下是否会沸腾的温度计算器。
