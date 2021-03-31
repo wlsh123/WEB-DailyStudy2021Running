@@ -39,7 +39,7 @@ class APP extends Component {
                 {/* 注册路由 */}
                 <Switch>
                   <Route exact path="/about" component={About} />
-                  <Route exact path="/home" component={Home} />
+                  <Route path="/home" component={Home} />
                   <Redirect to="/about"/>
                 </Switch>
               </div>
