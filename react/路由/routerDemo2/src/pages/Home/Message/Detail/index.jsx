@@ -7,20 +7,20 @@ const DetailData = [
 ]
 class Detail extends Component {
   render() { 
-    console.log(this.props.location.state)
+    // console.log(this.props.location.state)
     // 接收params参数
-    // const {match:{params}} = this.props
+    // const {id, title} = this.props.match.params
 
     // 接收search参数
     // const {search} = this.props.location
     // console.log(search.slice(1));
     // const {id, title} = qs.parse(search.slice(1));
     // 接收state参数
-    const {id ,title} = this.props.location.state
-    console.log(id,title)
+    const {id ,title} = this.props.location.state || {}
+    // console.log(params)
     const findResult = DetailData.find(detailObj=>{
       return detailObj.id === id;
-    })
+    }) || {};
     // console.log(findResult);
     return ( 
       <div>
