@@ -28,6 +28,16 @@ export default class Message extends Component {
     //push跳转+携带state参数
     this.props.history.push(`/home/message/detail`, { id, title });
   }
+
+  back=()=>{
+    this.props.history.goBack();
+  }
+  forward=()=>{
+    this.props.history.goForward();
+  }
+  go=()=>{
+    this.props.history.go(-2);
+  }
   render() {
     const {messageArr} = this.state
     return (
@@ -58,6 +68,10 @@ export default class Message extends Component {
         {/* <Route path='/home/message/detail' component={Detail} /> */}
         {/* state参数无需声明接收，正常注册路由即可 */}
         <Route path='/home/message/detail' component={Detail} />
+
+        <button onClick={this.back}>回退</button>
+        <button onClick={this.forward}>前进</button>
+        <button onClick={this.go}>GO</button>
       </div>
     )
   }
