@@ -1799,6 +1799,22 @@ setTimeout(function() {
      注册路由（无需声明，正常注册即可）：<Route path='/home/message/detail' component={Detail} />
 
      接收参数：const {id ,title} = this.props.location.state
+  
+- 编程式路由导航
+
+  1. 借助this.props.history对象上的API对操作路由跳转、前进、后退：
+
+     `this.props.history.push()`、
+
+     `this.props.history.replace()`、
+
+     `this.props.history.goBack()`、
+
+     `this.props.history.goForward()`、
+
+     `this.props.history.go()`
+
+- 
 
 ### 11.状态提升
 
