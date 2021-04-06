@@ -50,7 +50,7 @@
 
   ​	3）subscribe(listener),注册监听，当产生了新的state时，自动调用
 
-- redux案列
+- redux案列1
 
   1. 去除Count组件自身的状态
 
@@ -77,4 +77,20 @@
   5. 在index.js中检测store中状态的改变，一旦发生改变重新渲染<App />
 
      备注：redux只负责管理状态，至于状态的改变驱动着页面的展示，要靠自己写。
+
+- redux案例2:在案例1的基础上增加aciton和constant文件
+
+- redux案例3—异步action
+
+  1. 明确：延迟的动作不想交给组件自身，想交给action
+
+  2. 何时需要异步action：想要对状态进行操作，但是具体的数据靠异步任务返回（非必需）。
+
+  3. 具体编码：
+
+     npm install redux-thunk，并配置在store中
+
+     创建action的函数不再返回一般对象，而是一个函数，该函数中写异步任务。
+
+     异步任务有结果后，分发一个同步的action去真正操作数据。
 
