@@ -84,7 +84,7 @@
 
   1. 明确：延迟的动作不想交给组件自身，想交给action
 
-  2. 何时需要异步action：想要对状态进行操作，但是具体的数据靠异步任务返回（非必需）。
+  2. 何时需要异步action：想要对状态进行操作，但是具体的数据靠异步任务返回。
 
   3. 具体编码：
 
@@ -94,3 +94,32 @@
 
      异步任务有结果后，分发一个同步的action去真正操作数据。
 
+     备注：异步action不是必须要写的，完全可以自己等待异步任务的结果再分发同步action
+
+- react-redux模型图
+
+  1. 所有的UI组件都应该包裹一个容器组件，他们是父子关系。
+  2. 容器组件是真正和redux打交道的，里面可以随意的使用redux的api。
+  3. UI组件中不能使用任何redux的api。
+  4. 容器组件会传给UI组件：redux中所保存的状态、用于操作状态的方法。
+  5. 容器组件给UI传递状态、操作状态的方法均通过props传递。
+
+![react-redux原理图](/Users/wanglsh/Desktop/WEB-DailyStudy2021Running/react/redux/reduxDemo4_react-redux/react-redux原理图.png)
+
+- react-redux基本使用：
+
+  1. UI组件：不能使用任何redux的api，只负责页面的呈现、交互等。
+
+  2. 容器组件：负责和redux通信，将结果交给UI组件。
+
+  3. 如何创建一个容器组件---靠react-redux的connect函数
+
+     ​	connect(mapStateToProps, mapDispatchToProps)(CountUI)
+
+     ​		--mapStateToProps：映射状态，返回值是一个对象
+
+     ​		--mapDispatchToProps：映射操作状态的方法，返回值是一个对象
+
+  4. 备注：容器组件中的store是靠props传进去的，而不是在容器组件中直接引入
+
+  5. 备注：mapDispatchToProps也可以是一个对象。
