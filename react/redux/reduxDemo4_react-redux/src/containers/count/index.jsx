@@ -25,14 +25,3 @@ function mapDispatchToProps(dispatch){
 }
 //使用connect()()创建并暴露一个Count的容器组件
 export default connect(mapStateToProps, mapDispatchToProps)(CountUI)
-/*
-  简写模式：
-export default connect(
-  state => ({count:state}),
-  {
-    add:createIncrementAction,
-    jian:createDecrementAction,
-    addAsync:createIncrementAsyncAction
-  }
-)(CountUI)
-*/
