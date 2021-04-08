@@ -10,7 +10,7 @@
 
 - 某个组件的状态需要让其他组件可以随时拿到（共享）
 - 一个组件需要改变另一个组件的状态（通信）
-- 总体原则：能不用就不用，如果不用比较吃力才考虑使用
+- 总体原则：能不用就不用，如果不用比较吃力才考 虑使用
 
 ![redux原理图](/Users/wanglsh/Desktop/WEB-DailyStudy2021Running/react/redux/reduxDemo1/redux原理图.png)
 
