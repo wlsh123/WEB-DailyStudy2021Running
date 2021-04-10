@@ -1,4 +1,4 @@
-import { createIncrementAction, createDecrementAction, createIncrementAsyncAction} from '../../redux/actions/count'
+import { increment, decrement, incrementAsync} from '../../redux/actions/count'
 //引入connect用于连接UI组件与redux
 import {connect} from 'react-redux'
 
@@ -9,21 +9,21 @@ class Count extends Component {
 
   increment = () => {
     const { value } = this.selectNumber
-    this.props.add(value * 1)
+    this.props.increment(value * 1)
   }
   decrement = () => {
     const { value } = this.selectNumber
-    this.props.jian(value * 1)
+    this.props.decrement(value * 1)
   }
   incrementIfOdd = () => {
     const { value } = this.selectNumber
     if (this.props.count % 2 !== 0) {
-      this.props.add(value * 1)
+      this.props.increment(value * 1)
     }
   }
   incrementAsync = () => {
     const { value } = this.selectNumber
-    this.props.addAsync(value * 1, 500)
+    this.props.incrementAsync(value * 1, 500)
   }
   render() {
     // console.log(this)
@@ -48,12 +48,15 @@ class Count extends Component {
 
 export default connect(
   state => ({
-    count:state.add,
-    totalPerson: state.person.length
+    count:state.count,
+    totalPerson: state.persons.length
   }),
   {
-    add:createIncrementAction,
-    jian:createDecrementAction,
-    addAsync:createIncrementAsyncAction
-  }
+  //   increment:increment,
+  //   decrement:decrement,
+  //   incrementAsync:incrementAsync
+  increment,
+  decrement,
+  incrementAsync
+   }
 )(Count)
