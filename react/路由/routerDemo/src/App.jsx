@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 // import {Link, Route} from 'react-router-dom';
 import {NavLink, Route, Switch, Redirect} from 'react-router-dom'
-import Home from './pages/Home';
-import About from './pages/About'
+// import Home from './pages/Home';
+// import About from './pages/About'
+import Load from './pages/Load'
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+
 import Header from './component/Header';
 // import MyNavLink from './component/MyNavLink';
 class APP extends Component {
@@ -37,11 +41,13 @@ class APP extends Component {
             <div className="panel">
               <div className="panel-body">
                 {/* 注册路由 */}
-                <Switch>
-                  <Route exact path="/about" component={About} />
-                  <Route exact path="/home" component={Home} />
-                  <Redirect to="/about"/>
-                </Switch>
+                <Suspense fallback={<Load />}>
+                  <Switch>
+                    <Route exact path="/about" component={About} />
+                    <Route exact path="/home" component={Home} />
+                    <Redirect to="/about" />
+                  </Switch>
+                </Suspense>
               </div>
             </div>
           </div>

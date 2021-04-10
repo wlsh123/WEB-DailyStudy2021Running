@@ -2247,6 +2247,45 @@ class SignUoDialog extends React.Component{
 
 - ## 第五步：添加反向数据流
 
+### 14.react扩展
+
+1. #### setState更新状态的2种方法
+
+   - setState(stateChange, [callback] --对象式的setState
+
+     statechange为状态改变对象（该对象可以体现出状态的更改）
+
+     callback是可选的回调函数，它在状态更新完毕，界面也更新后才被调用
+
+   - setState(updater, [callback]). --函数式的setState
+
+     updater为返回stateChange对象的函数。
+
+     updater可以接收到state和props。
+
+     callback是可选的回调函数，它在状态更新完毕，界面也更新后才被调用。
+
+2. lazyLoad
+
+   //1.通过React的lazy函数配合import()函数动态加载路由组件。 ===》路由组件会被分开打包
+
+   ```react
+   const Login = lazy(()=>import('&/Login'))
+   ```
+
+   //2.通过<Suspense>指定在加载得到路由打包文件前显示一个自定义loading界面
+
+   ```react
+   <Suspense>
+     <Switch>
+     	<Route path="/xxx" component={} />
+       <Redirect to="/xxx" />
+     </Switch>
+   <Suspense>
+   ```
+
+   
+
 ## 高级指引
 
 ### 代码分割
