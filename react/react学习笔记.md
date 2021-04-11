@@ -2355,6 +2355,32 @@ class SignUoDialog extends React.Component{
      2. 语法：const refContainer = useRef()
      3. 作用：保存标签对象，功能与React.createRef()一样。
 
+4. context
+
+   一种组件间通信方式，常用于【祖组件】与【后代组件】间通信
+
+   ```react
+   1）创建Context容器对象：
+   	const MyContext = React.createContext()
+   2)渲染子组件时，外面包裹MyContext.Provider,通过value属性给后代组件传递数据：
+     <MyContext.Provider value={数据}>
+       <B />
+     </MyContext.Provider>
+   3）后代组件读取数据：
+     //第一种方式：仅适用于类组件
+   	static contextType = MyContext //声明接收context
+   	this.context //读取context中的value数据
+   
+   	//第二种方式：函数组件与类组件都可以用
+   	<MyContext.Consumer>
+    		{value => //value就是context中的value数据
+        `${value.userName}, 年龄是${value.userAge}`
+   		}
+     </MyContext.Consumer>
+   ```
+
+   注意：在应用开发中一般不用context，一般都用它的封装react插件
+
 ## 高级指引
 
 ### 代码分割
@@ -2811,6 +2837,19 @@ class Columns extends React.Component{
     <td>World</td>
   </tr>
 </table>
+
+
+import React, {Fragment} from 'react';
+
+return (
+    <Fragment>
+      <input type="text" ref={myRef}/>
+      <h2>当前求和为：{count}</h2>
+      <button onClick={add}>点击+1</button>
+      <button onClick={unmount}>卸载组件</button>
+      <button onClick={show}>点击提示</button>
+    </Fragment>
+  );
 ```
 
 还有一种短语法
