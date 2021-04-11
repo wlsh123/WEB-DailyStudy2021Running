@@ -2381,6 +2381,33 @@ class SignUoDialog extends React.Component{
 
    注意：在应用开发中一般不用context，一般都用它的封装react插件
 
+5. 组件优化
+
+   component的2个问题：
+
+   ​	1.只要执行setState(),即使不改变状态数据，组件也会重新render()
+
+   ​	2.只当前组件重新render(),就会自动重新render子组件，纵使子组件没有用到父组件的任何数据==》效率低
+
+   效率高的做法：只有当组件的state或props数据发生改变时才重新render（）
+
+   原因：Component中的shouldComponentUpdate()总是返回true。
+
+   解决：
+
+   ```react
+   办法1:
+   	重写shouldComponentUpdate（nextprops， nextstate）方法，比较新旧state或props数据，如果有变化才返回true，如果没有返回false。
+     
+   办法2:
+   	不使用Component，而用PureComponent，PureComponent重写了shouldComponentUpdate，只有state或props数据有变化才返回true。
+     注意：PureComponent只是进行state和props数据的浅比较，如果只是数据对象内部数据发生变化，直接返回false，所以不要直接修改state的数据，而是应该产生新的数据。
+     
+   项目中一般使用PureComponent来优化。
+   ```
+
+   
+
 ## 高级指引
 
 ### 代码分割
