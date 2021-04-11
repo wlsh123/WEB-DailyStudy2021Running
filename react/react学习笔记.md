@@ -2284,7 +2284,76 @@ class SignUoDialog extends React.Component{
    <Suspense>
    ```
 
-   
+3. React Hook/Hooks
+
+   Hook是react 16.8版本增加的新特性/新语法
+
+   可以让你在函数组件中使用state以及其他的react特性
+
+   - 三个常用的Hook
+
+     1. State Hook：React.useState()
+     2. Effect Hook: React.useEffect()
+     3. Ref Hook:React.useRef()
+
+   - State Hook
+
+     1. State Hook让函数组件也可以有state状态，并进行状态数据的读写操作
+
+     2. 语法：const [state, setState] = React.useState(initValue)
+
+     3. useState()说明：
+
+        参数：第一次初始化指定的值在内部作缓存
+
+        返回值：包含2个元素的数组，第1个为内部当前状态值，第2个为更新状态值的函数
+
+     4. setXXX()2种写法：
+
+        setXXX(newValue):参数为非函数值，直接指定新的状态值，内部用其覆盖原来的状态值
+
+        ```react
+        setCount(count+1)
+        ```
+
+        setXXX(value=>newValue):参数为函数，接收原来的状态值，返回新的状态值，内部用其覆盖原来的状态值
+
+        ```react
+        setCount(count=>count+1)
+        ```
+
+   - Effect Hook
+
+     1. Effect Hook可以让你在函数组件中执行副作用操作（用于模拟类似组件中的生命周期钩子）
+
+     2. React中的副作用操作：
+
+        发ajax请求数据获取
+
+        设置订阅/启动定时器
+
+        手动更改真实DOM
+
+     3. 语法和说明：
+
+        ```react
+        React.useEffect(()=>{
+            let timer = setInterval(() => {
+              setCount(count=>count+1)
+            }, 1000);
+            return ()=>{ //在组件卸载前执行
+              clearInterval(timer)
+            }
+          }, [])//如果指定的是[],回调函数只会在第一次render（）后执行，如果不写就是检测所有状态改变
+        ```
+
+     4. 可以把useEffect Hook看作是componentDidMount()、componentDidUpdate()、componentWillUnmount()的组合。
+
+   - Ref Hook
+
+     1. Ref Hook可以在函数组件中存储/查找组件内的标签或任意其他数据
+     2. 语法：const refContainer = useRef()
+     3. 作用：保存标签对象，功能与React.createRef()一样。
 
 ## 高级指引
 
