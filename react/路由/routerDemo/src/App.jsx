@@ -4,10 +4,11 @@ import {NavLink, Route, Switch, Redirect} from 'react-router-dom'
 // import Home from './pages/Home';
 // import About from './pages/About'
 import Load from './pages/Load'
+import Header from './component/Header';
+
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 
-import Header from './component/Header';
 // import MyNavLink from './component/MyNavLink';
 class APP extends Component {
   constructor(props) {
