@@ -2406,6 +2406,95 @@ class SignUoDialog extends React.Component{
    项目中一般使用PureComponent来优化。
    ```
 
+6. renderProps
+
+   ```react
+   import React, { Component } from 'react'
+   import './index.css'
+   //import C from '../1_setState'
+   
+   export default class Parent extends Component {
+   	render() {
+   		return (
+   			<div className="parent">
+   				<h3>我是Parent组件</h3>
+   				<A render={(name)=><B name={name}/>}/>
+   			</div>
+   		)
+   	}
+   }
+   
+   class A extends Component {
+   	state = {name:'tom'}
+   	render() {
+   		console.log(this.props);
+   		const {name} = this.state
+   		return (
+   			<div className="a">
+   				<h3>我是A组件</h3>
+   				{this.props.render(name)}
+   			</div>
+   		)
+   	}
+   }
+   
+   class B extends Component {
+   	render() {
+   		console.log('B--render');
+   		return (
+   			<div className="b">
+   				<h3>我是B组件,{this.props.name}</h3>
+   			</div>
+   		)
+   	}
+   }
+   ```
+
+7. 错误边界
+
+   ```react
+   static getDerivedStateFromError(error){
+   	//当Parent的子组件出现报错时，会触发getDerivedStateFromError调用，并携带错误信息error
+   }
+   
+   componentDidCatch(){
+     
+   }
+   ```
+
+8. 组件通信方式总结
+
+   组件间的关系：
+
+   - 父子组件
+   - 兄弟组件
+   - 祖孙组件
+
+   几种通信方式：
+
+   ```
+   1.props：
+   	children props
+   	render props
+   	
+   2.消息订阅-发布
+   	pubs-sub、event等
+   	
+   3.集中式管理：
+   	redux、dva等
+   	
+   4.conText：
+   	生产者-消费者模式
+   ```
+
+   比较好的搭配方式：
+
+   ```
+   父子组件：props
+   兄弟组件：消息订阅-发布、集中式管理
+   祖孙组件（跨级组件）：消息订阅-发布、集中式管理、conText
+   ```
+
    
 
 ## 高级指引
