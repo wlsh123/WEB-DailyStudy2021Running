@@ -1,4 +1,4 @@
-### 项目配置
+###  项目配置
   1.支持less环境：npm install --save less less-loader    然后再修改webpack配置
 
 ```json
