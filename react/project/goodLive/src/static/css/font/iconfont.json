@@ -1,0 +1,37 @@
+{
+  "id": "2485487",
+  "name": "demo",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "393791",
+      "name": "群蜂生活服务---线",
+      "font_class": "qunfengshenghuofuwuxian",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "5913436",
+      "name": "我的",
+      "font_class": "wode",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "6204097",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "15112776",
+      "name": "商城",
+      "font_class": "shangcheng",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    }
+  ]
+}
