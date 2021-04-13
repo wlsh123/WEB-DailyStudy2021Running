@@ -72,3 +72,6 @@ const lessModuleRegex = /\.module\.less$/;
 
 ​	
 
+轮播图插件 ；npm install --save react-swipeable-views
+import SwipeableViews from 'react-swipeable-views';
+https://github.com/oliviertassinari/react-swipeable-views
