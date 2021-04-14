@@ -75,3 +75,13 @@ const lessModuleRegex = /\.module\.less$/;
 轮播图插件 ；npm install --save react-swipeable-views
 import SwipeableViews from 'react-swipeable-views';
 https://github.com/oliviertassinari/react-swipeable-views
+
+安装依赖：npm install --save react-swipeable-views-utils
+
+
+
+搭建后台：react/project/goodLive/server
+
+npm install --save express
+
+安装依赖解决跨域问题：npm install --save-dev http-proxy-middleware

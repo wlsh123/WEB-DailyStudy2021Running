@@ -6,12 +6,14 @@ import HomeSwiper from '../../components/Swiper'
 import bannar1 from '../../static/images/image1.jpg'
 import bannar2 from '../../static/images/image2.jpg'
 import bannar3 from '../../static/images/image3.jpg'
+import HomeHot from './HomeHot';
 class Home extends Component {
   render() { 
     return ( 
       <div>
         <Header />
         <HomeSwiper banners = {[bannar1,bannar2,bannar3]} />
+        <HomeHot />
         Home
         <FootNav />
       </div>

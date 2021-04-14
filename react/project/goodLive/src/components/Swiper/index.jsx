@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
 import Pagination from './Pagination'
 import './style.less'
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 class Swiper extends Component {
     constructor(props){
         super(props)
@@ -10,7 +13,7 @@ class Swiper extends Component {
           };    
     }
     handleChangeIndex = index => {
-        console.log(index)
+        // console.log(index)
         this.setState({
           index:index,
         });
@@ -20,7 +23,7 @@ class Swiper extends Component {
         const {index} = this.state
         return (
            <div className='swiper'>
-                <SwipeableViews onChangeIndex={this.handleChangeIndex}>
+                <AutoPlaySwipeableViews interval={3000} onChangeIndex={this.handleChangeIndex}>
                     {
                         banners.map((bannar,index)=>{
                             return(
@@ -30,7 +33,7 @@ class Swiper extends Component {
                             )
                         })    
                     }
-                </SwipeableViews>
+                </AutoPlaySwipeableViews>
                 <Pagination dots={3} index={index} />
            </div>
         );
