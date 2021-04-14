@@ -9,7 +9,7 @@ class Pagination extends Component {
                 <ul>
                     {
                         arr.map((ele, i)=>{
-                            return <li key={index} className={index === i ? 'selected':''}></li>
+                            return <li key={i} className={index === i ? 'selected':''}></li>
                         })
                     }
                 </ul>
