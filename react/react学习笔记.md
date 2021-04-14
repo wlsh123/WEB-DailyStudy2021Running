@@ -2508,15 +2508,11 @@ class SignUoDialog extends React.Component{
 
 如果你没有使用这类工具，你就需要自己来进行配置。例如，查看 Webpack 文档上的[安装](https://webpack.docschina.org/guides/installation/)和[入门教程](https://webpack.docschina.org/guides/getting-started/)。
 
-- `import()`
+- 懒加载
 
 `React.lazy`函数能让你像渲染常规组件一样处理动态引入（的组件）。
 
 ```javascript
-//使用前
-import OtherComponent from './OtherComponent';
-
-//使用后
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 ```
 
@@ -2542,7 +2538,27 @@ function MyComponent() {
 }
 ```
 
-### Context（没学完）
+如果没有<Suspense>,那就会报错“Error: A React component suspended while rendering, but no fallback UI was specified.”。所以使用懒加载的组件都要用<Suspense>标签圈起来。这个标签有一个fallback属性，这个属性传一个loading组件，在组件还没加载出来时用这个loading组件展示。
+
+- 基于路由的懒加载
+
+  ```react
+  const Home = lazy(() => import('./pages/Home'))
+  const About = lazy(() => import('./pages/About'))
+  
+  {/* 注册路由 */}
+  <Suspense fallback={<Load />}>
+     <Switch>
+        <Route exact path="/about" component={About} />
+        <Route exact path="/home" component={Home} />
+        <Redirect to="/about" />
+     </Switch>
+  </Suspense>
+  ```
+
+  
+
+### Context
 
 - 何时使用Context
 
@@ -2574,10 +2590,12 @@ class ThemedButton extends React.Component{
 
 ```react
 //使用context可以避免通过中间元素传递props
+//1.使用React.createContext()创建一个Context容器对象
 const ThemeContext = React.createContext('light');
 class App extends React.Component{
     render(){
         return(
+            //2.渲染子组件时，外面包裹MyContext.Provider,通过value属性给后代组件传递数据
         	<ThemeContext.Provider value="dark">
             	<Toolbar />
             </ThemeContext.Provider>
@@ -2595,6 +2613,7 @@ function Toolbar(){
 }
 
 class ThemedButton extends React.Component{
+    //3.子组件接收数据
     static contextType = ThemeContext;
 	render(){
         return <Button theme={this.context} />;
@@ -2674,27 +2693,32 @@ MyClass.contextType = MyContext;
 
 挂载在 class 上的 `contextType` 属性会被重赋值为一个由 [`React.createContext()`](https://react.docschina.org/docs/context.html#reactcreatecontext) 创建的 Context 对象。这能让你使用 `this.context` 来消费最近 Context 上的那个值。你可以在任何生命周期中访问到它，包括 render 函数中。
 
-- Context.Consumer
+- 函数组件中用Context.Consumer接收context
 
 ```react
-<MyContext.Consumer>
-	{value => /*基于context值进行渲染*/}
-</MyContext.Consumer>
+function D(){
+  return(
+    <div className="grand2">
+      <h3>我是D组件</h3>
+      <Consumer>
+        {
+          value => `${value.userName}, 年龄是${value.userAge}`
+        }
+      </Consumer>
+    </div>
+  )
+}
 ```
 
 这里，React 组件也可以订阅到 context 变更。这能让你在[函数式组件](https://react.docschina.org/docs/components-and-props.html#function-and-class-components)中完成订阅 context。
 
 这需要[函数作为子元素（function as a child）](https://react.docschina.org/docs/render-props.html#using-props-other-than-render)这种做法。这个函数接收当前的 context 值，返回一个 React 节点。传递给函数的 `value` 值等同于往上组件树离这个 context 最近的 Provider 提供的 `value` 值。如果没有对应的 Provider，`value` 参数等同于传递给 `createContext()` 的 `defaultValue`。
 
-- Context.displayName
-
-context 对象接受一个名为 `displayName` 的 property，类型为字符串。React DevTools 使用该字符串来确定 context 要显示的内容。
-
 ### 错误边界
 
 错误边界是一种 React 组件，这种组件**可以捕获并打印发生在其子组件树任何位置的 JavaScript 错误，并且，它会渲染出备用 UI**，而不是渲染那些崩溃了的子组件树。错误边界在渲染期间、生命周期方法和整个组件树的构造函数中捕获错误。
 
-注意
+注意错误边界只能捕获生命周期钩子里面的错误。
 
 错误边界**无法**捕获以下场景中产生的错误：
 

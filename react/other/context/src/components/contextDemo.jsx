@@ -5,6 +5,7 @@ import './index.css'
 const MyContext = React.createContext()
 
 const { Provider, Consumer} = MyContext
+console.log(MyContext);
 export default class A extends Component {
   state={
     userName:'AComponent',
