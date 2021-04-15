@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './style.less'
-class HeadComponent extends Component {
+class CityHead extends Component {
   clickBackHandle=()=>{
     window.history.back()
     // this.props.history.push('/')
@@ -17,4 +17,4 @@ class HeadComponent extends Component {
   }
 }
  
-export default HeadComponent;
+export default CityHead;

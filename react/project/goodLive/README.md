@@ -85,3 +85,7 @@ https://github.com/oliviertassinari/react-swipeable-views
 npm install --save express
 
 安装依赖解决跨域问题：npm install --save-dev http-proxy-middleware
+
+关联redux：安装依赖
+  npm install --save redux react-redux redux-devtools-extension
+  

@@ -10,7 +10,7 @@ class HomeHot extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount(){ 
     api.getHomehot1().then(res=>res.json()).then(data=>{
       // console.log(data);
       this.setState({
