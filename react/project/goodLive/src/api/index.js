@@ -1,5 +1,5 @@
 import base from './base'
-import {httpGet} from '../utils/http'
+import { httpGet } from '../utils/http'
  
 const api = {
   getHomehot1(){

@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const homehotData = require('./data/home/homehot')
+const homehotData = require("./data/home/homehot1")
 
-router.get('/homehot1',(req,res)=>{
+router.get('/homehot1',(req, res)=>{
   res.send(homehotData.hot1)
 })
 
