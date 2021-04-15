@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import './style.less'
 import '../../static/css/font/iconfont.css'
 class Head extends Component {
@@ -6,8 +7,10 @@ class Head extends Component {
     return (
       <div id='home-header' className='home-header'>
         <div className='home-header-left float-left'>
-          <span>北京</span>
-          <i className='iconfont icon-shouye'></i>
+          <Link to='/city'>
+            <span>北京</span>
+            <i className='iconfont icon-shouye'></i>
+          </Link>
         </div>
         <div className='home-header-right float-right'>
           <i className='iconfont icon-shouye'></i>
