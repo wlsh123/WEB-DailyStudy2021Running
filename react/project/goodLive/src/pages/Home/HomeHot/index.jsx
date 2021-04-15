@@ -62,14 +62,18 @@ class HomeHot extends Component {
 
   /* ---还有bug，暂时用假数据
   componentDidMount(){
-    api.getHomehot1().then(res => res.json()).then(data => {
+    api.getHomehot1({
+      city:this.props.cityName
+    }).then(res => res.json()).then(data => {
       // console.log(data);
       this.setState({
         homehot1:data
       })
     })
 
-    api.getHomehot2().then(res => res.json()).then(data => {
+    api.getHomehot2({
+      city:this.props.cityName
+    }).then(res => res.json()).then(data => {
       this.setState({
         homehot2:data
       })

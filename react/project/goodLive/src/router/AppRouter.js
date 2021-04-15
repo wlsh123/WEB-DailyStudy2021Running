@@ -6,8 +6,18 @@ import Mine from '../pages/Mine'
 import Shop from '../pages/Shop'
 import City from '../pages/City'
 import NotFound from '../pages/NotFound'
-
-export default class AppRouter extends React.Component{
+import { initCity} from '../actions/city'
+import {connect} from 'react-redux'
+import myStorage from '../utils/myStorage'
+class AppRouter extends React.Component{
+  //初始化操作
+  componentDidMount(){
+    if (myStorage.getItem('city')) {
+      this.props.initCity({
+          cityName:myStorage.getItem('city')
+      })
+    }
+  }
   render(){
     return(
       <Router>
@@ -23,3 +33,4 @@ export default class AppRouter extends React.Component{
     )
   }
 }
+export default connect(null,{initCity})(AppRouter)

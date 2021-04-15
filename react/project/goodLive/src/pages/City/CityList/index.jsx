@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import myStorage from '../../../utils/myStorage'
 import './style.less'
 
 class CityList extends Component {
@@ -10,6 +11,9 @@ class CityList extends Component {
     this.props.changeCity({
       cityName:c
     })
+
+    //用户选择后，将城市存储到本地
+    myStorage.setItem('city',c)
     window.history.back();
   }
   render() { 
