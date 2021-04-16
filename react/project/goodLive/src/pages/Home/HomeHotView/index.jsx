@@ -4,18 +4,19 @@ class HomeHotView extends Component {
   render() {
     const data = this.props.data;
     const title = this.props.title
+    // console.log(data)
     return (
       <div className='hotproduct'>
         <h3>{title}</h3>
         <div className='hot-container'>
           <ul className='clear-fix'>
             {
-              data.map((ele, index)=>{
+              data.map((d, index)=>{
                 return(
-                  <li key={ele.id}>
-                    <a href={ele.link}>
-                      <img src={ele.img} alt={ele.title} />
-                      <span>{ele.title}</span>
+                  <li key={d.id}>
+                    <a href={d.link}>
+                      <img src={d.img} alt={d.title} />
+                      <span>{d.title}</span>
                     </a>
                   </li>
                 )

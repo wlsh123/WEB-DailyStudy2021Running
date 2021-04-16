@@ -8,7 +8,7 @@ class Head extends Component {
       <div id='home-header' className='home-header'>
         <div className='home-header-left float-left'>
           <Link to='/city'>
-            <span>北京</span>
+            <span>{this.props.cityName}</span>
             <i className='iconfont icon-shouye'></i>
           </Link>
         </div>

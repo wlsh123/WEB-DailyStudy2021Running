@@ -1,23 +1,42 @@
 import React, { Component } from "react";
+import myStorage from "../../../utils/myStorage";
 import "./style.less";
+
 class CityList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cityList: ["成都", "北京", "上海", "广州", "深圳", "杭州"],
-    };
-  }
-  clickChangeCity(data) {
-    console.log(data);
+  state = {
+    city: [
+      "成都",
+      "北京",
+      "广州",
+      "上海",
+      "深圳",
+      "杭州",
+      "苏州",
+      "扬州",
+      "西安",
+      "昆明",
+      "桂林",
+      "沈阳",
+    ],
+  };
+  clickChangeCity(c) {
+    // console.log(c);
+    this.props.changeCity({
+      cityName: c,
+    });
+
+    //用户选择后，将城市存储到本地
+    myStorage.setItem("city", c);
+    window.history.back();
   }
   render() {
-    const cityList = this.state.cityList;
-    // console.log(cityList);
+    const city = this.state.city;
+    // console.log(city)
     return (
       <div className="city-list-container">
         <h3>热门城市</h3>
         <ul className="clear-fix">
-          {cityList.map((city, index) => {
+          {city.map((city, index) => {
             return (
               <li key={index} onClick={this.clickChangeCity.bind(this, city)}>
                 <span>{city}</span>

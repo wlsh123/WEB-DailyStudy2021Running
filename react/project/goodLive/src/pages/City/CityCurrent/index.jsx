@@ -4,7 +4,7 @@ class CityCurrent extends Component {
   render() {
     return (
       <div className="current-city">
-        <h2>当前城市:北京</h2>
+        <h2>当前城市:{this.props.cityName}</h2>
       </div>
     );
   }

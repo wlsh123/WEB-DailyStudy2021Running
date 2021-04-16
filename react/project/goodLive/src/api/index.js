@@ -1,12 +1,12 @@
 import base from './base'
-import {httpGet} from '../utils/http'
+import { httpGet } from '../utils/http'
  
 const api = {
-  getHomehot1(){
-    return httpGet(base.homehot1);
+  getHomehot1(params){
+    return httpGet(base.homehot1 + '?city=' + params.city);
   },
-  getHomehot2() {
-    return httpGet(base.homehot2);
+  getHomehot2(params) {
+    return httpGet(base.homehot2 + '?city=' + params.city);
   }
 }
 
