@@ -4,8 +4,8 @@
 //引入createStore，专门用于创建redux中最为核心的store
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import reducer from './reducers/index'
+import reducers from './reducers/index'
 
 
 //暴露store
-export default createStore(reducer, applyMiddleware(thunk))
+export default createStore(reducers, applyMiddleware(thunk))

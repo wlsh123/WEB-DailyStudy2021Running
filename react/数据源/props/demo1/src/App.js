@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Father from './component/Father';
+import MouseTracker from './page/MouseTracker';
 class App extends Component {
   render(){
     return (
       <div className="App">
-        <Father />
+        <MouseTracker />
       </div>
     );
   }
