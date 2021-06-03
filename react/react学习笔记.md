@@ -3126,3 +3126,92 @@ class Login extends React.Component{
 - 最好使用每条数据的唯一标识作为key，id、手机号、身份证、学号等唯一值。
   - 如果确定只是简单的展示数据，用index也是可以的
 
+## Hooks
+
+### StateHook
+
+- stateHook可以让函数组件也可以有state状态，并进行状态数据的读写操作
+
+- 语法：const [XXX, setXxx] = React.useState(initValue)
+
+- useState()说明：
+
+  1. 参数：第一次初始化指定的值在内部作缓存。
+  2. 返回值：返回一个数组，数组中的第一个值为内部当前状态值，第二个值为更新状态的函数。
+
+- setXxx()2种写法：
+
+  setXxx(newvalue):参数为非函数值，直接指定新的状态值。
+
+  setXxx(()=>{}):参数为一个函数，接收原本的状态值，返回新的状态值。
+
+  ```react
+  import React, {useState} from 'react';
+  function demo(){
+      const [count, setCount] = useState(0)
+      return (
+      	<div>
+          	<p>You clicked {count} times</p>
+              <button onClick={()=>setCount(count+1)}>
+              	Click me
+              </button>
+          </div>
+      )
+  }
+  ```
+
+  ```react
+  //等价的类组件
+  class Example extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        count: 0
+      };
+    }
+  
+    render() {
+      return (
+        <div>
+          <p>You clicked {this.state.count} times</p>
+          <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+            Click me
+          </button>
+        </div>
+      );
+    }
+  }
+  ```
+
+### EffectHook
+
+- effectHook可以让你在函数组件中执行副作用操作（模拟类组件中的生命周期钩子）、
+
+- react中的副作用操作:
+
+  - 发ajax请求
+  - 设置订阅/启动定时器
+  - 手动更改真实DOM
+
+- 语法和说明：
+
+  ```react
+  useEffect(()=>{
+      //在此执行任何带副作用操作
+      return()=>{
+          //在此做一些收尾工作，比如清除定时器/取消订阅等
+      }//返回的这个函数就相当于componentwillUnmount()
+      
+  },[])//如果指定的是[],则不监控任何state，作用就相当于componentDidMount();[count],就监控count的改变，作用相当于componentDidUpdate();如果这个参数不写，就监控所有state的改变。
+  ```
+
+- 可以把useEffect Hook看成`componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 这三个函数的组合。
+
+### RefHook
+
+- Ref Hook可以在函数组件中存储/查找组件内的标签或任意其他数据
+- 语法：const refContainer = userRef()
+- 作用：保存标签对象，功能和React.createRef()一样。
+
+### 自定义Hook
+
